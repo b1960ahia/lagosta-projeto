@@ -68,7 +68,7 @@ main p{
     font-size: 1em;
 }
 div.video{
-    background-color: var(--cor2);
+    background-color: rgb(99, 158, 185);
     margin: 0px -20px 30px -20px;
     padding: 20px;
     padding-bottom: 50%;
@@ -103,10 +103,13 @@ article > h3{
     font-family: var(--fonte-lagosta);
     color: #020752;
     margin-bottom: 10px;
+    font-size: 1.3em;
+    
 }
 article > h4{
     font-family: var(--fonte-lagosta);
     color: #020752;
+    font-size: 1.1em;
 }
 
 nav{
@@ -138,7 +141,7 @@ ul {
 aside{
     font-family: var(--fonte-lagosta);
     margin-bottom: 10px;
-    background-color: var(--cor2);
+    background-color:rgb(99, 158, 185);
     padding: 10px;
     border-radius: 10px;
     box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.288);
@@ -164,10 +167,10 @@ li{
     font-family: var(--fonte-lagosta);
     color: rgb(2, 12, 41);
     font-size: 1.3em;
-    font-style: oblique;    
+    font-style: normal;    
 }
 footer{
-    background-color: #797EC3;
+    background-color:  rgb(99, 158, 185);
     padding: 5px;
     font-family: var(--fonte-lagosta);
     color: white;
@@ -175,7 +178,7 @@ footer{
     border-radius: 10px 0px;
 }
 footer a{    
-    font-size: 0.8em;
+    font-size: 1em;
     text-decoration: none;
     font-weight: bolder;
 }
