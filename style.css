@@ -135,7 +135,7 @@ nav a:hover{
 ul {    
     list-style-position: inside;
     margin-left: 15px;
-    columns: 2;
+    columns: 1;
     list-style-type: '\2714\00A0\00A0';
 }
 aside{
@@ -161,7 +161,7 @@ aside img{
     width: 60%;
     padding: 20px;
     border-radius: 0px;
-    
+        
 }
 li{
     font-family: var(--fonte-lagosta);
