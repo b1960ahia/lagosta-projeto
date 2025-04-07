@@ -166,8 +166,9 @@ aside img{
 li{
     font-family: var(--fonte-lagosta);
     color: rgb(2, 12, 41);
-    font-size: 1.3em;
-    font-style: normal;    
+    font-size: 1.4em;
+    font-style: normal;
+    font-weight: bolder;    
 }
 footer{
     background-color:  rgb(99, 158, 185);
