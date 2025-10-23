@@ -28,6 +28,93 @@ body.dark-mode {
 /* ------------------------------
    ESTILO GERAL
 -------------------------------*/
+/* === Galeria de Lagostas Raras === */
+.lagostas-raras {
+    background: var(--bg-secundario, #0d1b2a);
+    color: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    margin-top: 30px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    animation: fadeInUp 1s ease;
+}
+
+.lagostas-raras h3 {
+    font-size: 1.6em;
+    margin-bottom: 20px;
+    color: var(--destaque, #ffb703);
+    text-shadow: 0 0 10px rgba(255, 183, 3, 0.5);
+}
+
+.galeria-lagostas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+/* Imagens */
+.galeria-lagostas img {
+    width: 220px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid #fff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.galeria-lagostas img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+}
+
+/* Tooltip customizado */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 0;
+    width: 240px;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    padding: 12px;
+    position: absolute;
+    z-index: 10;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 0.5s ease, transform 0.4s ease;
+    font-size: 0.9em;
+    line-height: 1.4;
+    pointer-events: none;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+}
+
+/* Animação de entrada */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -304,3 +391,206 @@ footer a:hover {
     padding: 15px;
   }
 }
+/* === Tema automático (modo claro/escuro) === */
+:root {
+  --cor-primaria: #0077b6;
+  --cor-secundaria: #ffb703;
+  --bg-claro: #f5f9ff;
+  --bg-escuro: #0d1b2a;
+  --texto-claro: #f8f9fa;
+  --texto-escuro: #1b263b;
+}
+
+/* Detecta modo escuro do sistema */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cor-primaria: #90e0ef;
+    --cor-secundaria: #ffd166;
+    --bg-claro: #0d1b2a;
+    --bg-escuro: #000814;
+    --texto-claro: #e0e1dd;
+    --texto-escuro: #ffffff;
+  }
+}
+
+/* === Bloco Lagostas Raras === */
+.lagostas-raras {
+  background: linear-gradient(135deg, var(--bg-escuro), #001d3d);
+  color: var(--texto-claro);
+  padding: 40px 20px;
+  border-radius: 20px;
+  margin-top: 40px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+  animation: fadeInUp 1s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.lagostas-raras h3 {
+  font-size: 1.8em;
+  margin-bottom: 25px;
+  background: linear-gradient(90deg, var(--cor-secundaria), var(--cor-primaria));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+}
+
+/* Galeria Responsiva */
+.galeria-lagostas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.galeria-lagostas img {
+  width: 220px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+/* Efeito ao passar o mouse */
+.galeria-lagostas img:hover {
+  transform: scale(1.08) rotate(-1deg);
+  box-shadow: 0 0 25px var(--cor-secundaria);
+  border-color: var(--cor-secundaria);
+}
+
+/* === Tooltip moderno === */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  opacity: 0;
+  width: 240px;
+  background: rgba(10, 10, 10, 0.9);
+  color: #fff;
+  text-align: center;
+  border-radius: 12px;
+  padding: 12px 14px;
+  position: absolute;
+  z-index: 10;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%) translateY(5px);
+  transition: opacity 0.5s ease, transform 0.4s ease;
+  font-size: 0.9em;
+  line-height: 1.5;
+  pointer-events: none;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+/* Animação de entrada suave */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Modo responsivo */
+@media (max-width: 600px) {
+  .galeria-lagostas img {
+    width: 100%;
+    max-width: 300px;
+  }
+  .tooltip .tooltiptext {
+    width: 200px;
+    font-size: 0.85em;
+  }
+}
+.noticias-curiosidades {
+  text-align: center;
+  background: linear-gradient(135deg, #001d3d, #003566);
+  color: #f1f1f1;
+  padding: 50px 20px;
+  border-radius: 20px;
+  margin-top: 50px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+  animation: fadeInUp 1s ease;
+}
+
+.noticias-curiosidades h2 {
+  font-size: 2em;
+  margin-bottom: 15px;
+  color: #ffd166;
+}
+
+.noticias-curiosidades p {
+  font-size: 1.1em;
+  margin-bottom: 20px;
+  color: #e0e1dd;
+}
+
+.pesquisa-web {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.pesquisa-web input[type="text"] {
+  width: 280px;
+  padding: 10px 15px;
+  border-radius: 12px;
+  border: 1px solid #ffd166;
+  outline: none;
+  font-size: 1em;
+  transition: 0.3s;
+  background-color: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+.pesquisa-web input[type="text"]::placeholder {
+  color: #bbb;
+}
+
+.pesquisa-web input[type="text"]:focus {
+  border-color: #90e0ef;
+  box-shadow: 0 0 10px #90e0ef;
+}
+
+.pesquisa-web button {
+  background: linear-gradient(90deg, #90e0ef, #ffd166);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-size: 1em;
+  font-weight: bold;
+  color: #001d3d;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pesquisa-web button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #ffd166;
+}
+
+.dicas-temas p {
+  font-size: 0.9em;
+  color: #ccc;
+  margin-top: 10px;
+}
+
+

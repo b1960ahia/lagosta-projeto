@@ -20,6 +20,22 @@
         <a href="https://wikianimals.eu/pt/animal/lagosta">noticias</a>
         <a href="https://www.facebook.com/aquaubatuba/videos/voc%C3%AA-j%C3%A1-viu-uma-lagosta-fazendo-muda/185559052190386/">curiosidades</a>
         <a href="#">contato</a>
+        <section id="noticias" class="noticias-curiosidades">
+  <h2>Notícias e Curiosidades</h2>
+  <p>Pesquise novidades e fatos curiosos sobre o mundo marítimo, a pesca da lagosta e o oceano.</p>
+
+  <form class="pesquisa-web" action="https://www.google.com/search" method="get" target="_blank">
+    <input type="text" name="q" placeholder="Pesquisar na web..." required>
+    <input type="hidden" name="as_sitesearch" value="">
+    <button type="submit">🔍 Pesquisar</button>
+  </form>
+
+  <div class="dicas-temas">
+    <p>Exemplos: <em>“lagosta azul”, “pesca artesanal no Brasil”, “mudanças climáticas e oceanos”</em></p>
+  </div>
+</section>
+
+
     </nav>
     <main>
         <article>
@@ -31,20 +47,49 @@
             [foto]
             <p>Lagostas não sobrevivem em água doce ou gelada. Se expostas a temperaturas muito baixas, entram em choque e morrem.  O coração da lagosta fica atrás da cabeça! E se parar, um simples estímulo (como um choque) pode fazê-lo voltar a bater.  Elas podem regenerar patas, garras e até olhos perdidos, mas demora várias mudas para ficarem como novas.  No século XIX, lagostas eram consideradas "comida de prisioneiros e pobres" nos EUA. Só no século XX virou um prato sofisticado.  </p>
                         
-            <aside>
-                <h3>Lagostas com cores raras devido a mutações genéticas</h3>
-                <ul>
-                    <li>- <abbr title="1 em 2 milhões">Lagosta Azul</abbr></li>                    
-                    <img src="lagosta azul.jpeg" alt="raras">                    
-                    <li><abbr title="1 em 30 milhões">Lagosta laranja</abbr></li>
-                    <img src="lagosta laranja.jpeg" alt="raras">
-                    <li><abbr title="1 em 50 milhões">Lagosta Bicolor</abbr></li>
-                    <img src="bicolor.jpeg" alt="raras">
-                    <li><abbr title="1 em 100 milhões">Lagosta Albina</abbr></li>
-                    <img src="lagosta albina.jpeg" alt="raras">
-                </ul>
-            </aside>
-            
+            <aside class="lagostas-raras">
+    <h3>Lagostas com cores raras devido a mutações genéticas</h3>
+    <div class="galeria-lagostas">
+
+        <div class="tooltip">
+            <img src="lagosta azul.jpeg" alt="Lagosta Azul">
+            <div class="tooltiptext">
+                🩵 <strong>Lagosta Azul</strong><br>
+                Mutação genética altera a proteína <em>crustacyanin</em>, criando o tom azul intenso.<br>
+                Ocorre em cerca de <strong>1 em 2 milhões</strong>.
+            </div>
+        </div>
+
+        <div class="tooltip">
+            <img src="lagosta laranja.jpeg" alt="Lagosta Laranja">
+            <div class="tooltiptext">
+                🧡 <strong>Lagosta Laranja / Dourada</strong><br>
+                Alteração genética reduz pigmentos, gerando tons laranja ou amarelos.<br>
+                Raridade aproximada: <strong>1 em 30 milhões</strong>.
+            </div>
+        </div>
+
+        <div class="tooltip">
+            <img src="bicolor.jpeg" alt="Lagosta Bicolor">
+            <div class="tooltiptext">
+                💙🧡 <strong>Lagosta Bicolor</strong><br>
+                Exibe duas cores distintas no corpo (geralmente divididas ao meio).<br>
+                Raridade estimada: <strong>1 em 50 milhões</strong>.
+            </div>
+        </div>
+
+        <div class="tooltip">
+            <img src="lagosta albina.jpeg" alt="Lagosta Albina">
+            <div class="tooltiptext">
+                🤍 <strong>Lagosta Albina</strong><br>
+                Ausência de pigmentos naturais no exoesqueleto.<br>
+                Considerada a mais rara: <strong>1 em 100 milhões</strong>.
+            </div>
+        </div>
+
+    </div>
+</aside>
+
             <h2>Métodos Eficazes para Pescar Lagosta </h2>
             <p>A pesca de lagosta é uma atividade tradicional em muitas regiões costeiras, tanto para fins comerciais quanto recreativos. Conhecer as técnicas adequadas é essencial para garantir uma captura eficiente e sustentável. Neste artigo, exploraremos os principais métodos utilizados para pescar lagosta.  </p>
                             
@@ -98,7 +143,7 @@
 
         </article>
     </main>  
-    <script>
+   <script>
   // --- BOTÃO TOPO ---
   window.onscroll = function() {
     document.getElementById("btnTopo").style.display =
@@ -129,6 +174,7 @@
   });
 </script>
 
-     
+   
+
 </body>
 </html>
