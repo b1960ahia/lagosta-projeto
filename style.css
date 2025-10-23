@@ -152,9 +152,10 @@ article h1, article h2, article h3, article h4 {
   animation: fadeInUp var(--duracao) var(--ease);
 }
 p {
-  margin-bottom: 15px;
-  text-align: center;
+  margin-bottom: 20px;
+  margin-left: 10px;  
   animation: fadeIn var(--duracao) var(--ease);
+  font-size: 1em;
 }
 
 /* ---------------------
