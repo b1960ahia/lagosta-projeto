@@ -9,6 +9,8 @@
 </head>
 <body>
     <header>
+        <button id="toggleTema">🌞/🌙</button>
+
         <h1>As Formas de Captura da  Lagosta</h1>
         <p>Conheça todas as etapas, curiosidades e riscos, da pesca da Lagosta,  em um único lugar</p>
                 
@@ -95,6 +97,38 @@
             <footer>Site criado por João Bahia para o seu <a href="https://github.com/b1960ahia/JBahia">Github.</a></footer>
 
         </article>
-    </main>       
+    </main>  
+    <script>
+  // --- BOTÃO TOPO ---
+  window.onscroll = function() {
+    document.getElementById("btnTopo").style.display =
+      (document.documentElement.scrollTop > 200) ? "block" : "none";
+  };
+
+  // --- REVEAL DE IMAGENS ---
+  const imgs = document.querySelectorAll('img');
+  const revelar = () => {
+    imgs.forEach(img => {
+      const topo = img.getBoundingClientRect().top;
+      if (topo < window.innerHeight - 100) img.classList.add('visivel');
+    });
+  };
+  window.addEventListener('scroll', revelar);
+  window.addEventListener('load', revelar);
+
+  // --- TEMA CLARO / ESCURO ---
+  const btnTema = document.getElementById('toggleTema');
+  const body = document.body;
+  const temaSalvo = localStorage.getItem('tema');
+  if (temaSalvo === 'dark') body.classList.add('dark-mode');
+
+  btnTema.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    const temaAtual = body.classList.contains('dark-mode') ? 'dark' : 'light';
+    localStorage.setItem('tema', temaAtual);
+  });
+</script>
+
+     
 </body>
 </html>
