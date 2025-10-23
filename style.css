@@ -144,9 +144,10 @@ nav a:hover {
 main {
   padding-top: 18px;
   padding-bottom: 24px;
+  background-color: aquamarine;
 }
 article h1, article h2, article h3, article h4 {
-  color: var(--cor-primaria);
+  color: rgb(4, 65, 4);
   margin-top: 5px;
   margin-bottom: 10px;
   animation: fadeInUp var(--duracao) var(--ease);
