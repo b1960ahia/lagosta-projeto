@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <button id="btnTopo" title="Voltar ao topo">↑</button>   
     <header>
         <button id="toggleTema">🌞/🌙</button>
 
@@ -16,10 +17,7 @@
                 
     </header>
     <nav>
-        <a href="#">home</a>
-        <a href="https://wikianimals.eu/pt/animal/lagosta">noticias</a>
-        <a href="https://www.facebook.com/aquaubatuba/videos/voc%C3%AA-j%C3%A1-viu-uma-lagosta-fazendo-muda/185559052190386/">curiosidades</a>
-        <a href="#">contato</a>
+       
         <section id="noticias" class="noticias-curiosidades">
   <h2>Notícias e Curiosidades</h2>
   <p>Pesquise novidades e fatos curiosos sobre o mundo marítimo, a pesca da lagosta e o oceano.</p>
@@ -172,9 +170,18 @@
     const temaAtual = body.classList.contains('dark-mode') ? 'dark' : 'light';
     localStorage.setItem('tema', temaAtual);
   });
+   // Exibe o botão quando rolar mais que 200px
+  window.onscroll = function() {
+    const btn = document.getElementById("btnTopo");
+    btn.style.display = (document.documentElement.scrollTop > 200) ? "block" : "none";
+  };
+
+  // Volta ao topo suave ao clicar no botão
+  document.getElementById("btnTopo").onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 </script>
 
-   
 
 </body>
 </html>

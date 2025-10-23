@@ -1,6 +1,6 @@
-/* ------------------------------
-   TEMA PADRÃO (CLARO)
--------------------------------*/
+/* ---------------------------------
+   Tema Base com Variáveis Globais
+----------------------------------- */
 :root {
   --cor-primaria: #004d40;
   --cor-secundaria: #00796b;
@@ -13,9 +13,6 @@
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ------------------------------
-   TEMA ESCURO (DARK MODE)
--------------------------------*/
 body.dark-mode {
   --cor-primaria: #022d2b;
   --cor-secundaria: #005b4f;
@@ -25,102 +22,28 @@ body.dark-mode {
   --sombra: 0 2px 8px rgba(255, 255, 255, 0.1);
 }
 
-/* ------------------------------
-   ESTILO GERAL
--------------------------------*/
-/* === Galeria de Lagostas Raras === */
-.lagostas-raras {
-    background: var(--bg-secundario, #0d1b2a);
-    color: #fff;
-    padding: 30px;
-    border-radius: 16px;
-    margin-top: 30px;
-    text-align: center;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-    animation: fadeInUp 1s ease;
+/* Detecta modo escuro do sistema (opcional) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cor-primaria: #022d2b;
+    --cor-secundaria: #005b4f;
+    --cor-fundo: #101c1b;
+    --cor-texto: #e3e3e3;
+    --cor-destaque: #ffa270;
+    --sombra: 0 2px 8px rgba(255, 255, 255, 0.1);
+  }
 }
 
-.lagostas-raras h3 {
-    font-size: 1.6em;
-    margin-bottom: 20px;
-    color: var(--destaque, #ffb703);
-    text-shadow: 0 0 10px rgba(255, 183, 3, 0.5);
-}
-
-.galeria-lagostas {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-}
-
-/* Imagens */
-.galeria-lagostas img {
-    width: 220px;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 12px;
-    border: 2px solid #fff;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.galeria-lagostas img:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
-}
-
-/* Tooltip customizado */
-.tooltip {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-}
-
-.tooltip .tooltiptext {
-    visibility: hidden;
-    opacity: 0;
-    width: 240px;
-    background-color: rgba(0, 0, 0, 0.85);
-    color: #fff;
-    text-align: center;
-    border-radius: 10px;
-    padding: 12px;
-    position: absolute;
-    z-index: 10;
-    bottom: 110%;
-    left: 50%;
-    transform: translateX(-50%);
-    transition: opacity 0.5s ease, transform 0.4s ease;
-    font-size: 0.9em;
-    line-height: 1.4;
-    pointer-events: none;
-}
-
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(-50%) translateY(-5px);
-}
-
-/* Animação de entrada */
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
+/*Box Sizing Global*/
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* ----------------------
+     Estilo Geral
+------------------------ */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--cor-fundo);
@@ -131,114 +54,117 @@ body {
   transition: background-color 0.5s var(--ease), color 0.5s var(--ease);
 }
 
-/* ------------------------------
-   CABEÇALHO
--------------------------------*/
+/* Foco visual */
+nav a:focus, #toggleTema:focus, .pesquisa-web input:focus, .pesquisa-web button:focus {
+  outline: 2px solid var(--cor-destaque);
+  outline-offset: 2px;
+}
+
+/* ----------------------
+      Cabeçalho
+------------------------ */
 header {
   background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
   color: #fff;
   text-align: center;
-  padding: 40px 20px 60px;
+  padding-bottom: 24px;
+  padding: 12px 6px 16px;
+  /* Menor altura no topo e fundo */
   box-shadow: var(--sombra);
   position: relative;
   animation: fadeInDown var(--duracao) var(--ease);
 }
 
 header h1 {
-  font-size: 2rem;
-  margin-bottom: 10px;
+  
+  font-size: 3rem;      /* Menor, mas ainda destaque */
+  margin-bottom: 5px;      /* Menos espaço abaixo do título */
   animation: slideIn var(--duracao) var(--ease);
 }
 
 header p {
-  font-size: 1.1rem;
-  max-width: 700px;
-  margin: 0 auto;
-  opacity: 0.9;
+  font-size: 1.5rem;
+  font-style: oblique;  
+  max-width: 98vw;
+  margin: 0 auto 0;        /* Centralizado, menos espaço */
+  opacity: 0.85;  
 }
 
-/* ------------------------------
-   BOTÃO DO TEMA (TOGGLE)
--------------------------------*/
+/* ----------------------
+     Botão Tema
+------------------------ */
 #toggleTema {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  background-color: #fff2;
-  color: #fff;
-  border: 2px solid #fff4;
-  padding: 8px 14px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: all 0.3s var(--ease);
+ position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 0.85rem;
 }
-
 #toggleTema:hover {
   background-color: var(--cor-destaque);
   color: #fff;
 }
 
-/* ------------------------------
-   NAVEGAÇÃO
--------------------------------*/
+/* ----------------------
+      Navegação
+------------------------ */
 nav {
   background-color: var(--cor-secundaria);
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;         /* Permite quebrar em várias linhas */
+  justify-content: center; /* Centraliza os itens */
+  gap: 16px;               /* Espaço entre os links */
+  background-color: var(--cor-secundaria);
   padding: 12px;
   position: sticky;
-  top: 0;
+  padding-top: 5px;
   z-index: 100;
   animation: fadeIn var(--duracao) ease-in;
+ 
 }
 
 nav a {
   color: #fff;
   text-decoration: none;
-  margin: 0 15px;
+  margin: 0 10px;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   transition: color 0.3s var(--ease), transform 0.3s var(--ease);
 }
-
 nav a:hover {
   color: var(--cor-destaque);
   transform: scale(1.1);
 }
 
-/* ------------------------------
-   CONTEÚDO PRINCIPAL
--------------------------------*/
+/* ----------------------
+    Conteúdo Principal
+------------------------ */
 main {
-  padding: 30px 20px;
-  max-width: 1100px;
-  margin: auto;
-  animation: fadeInUp var(--duracao) var(--ease);
+  padding-top: 18px;
+  padding-bottom: 24px;
 }
-
 article h1, article h2, article h3, article h4 {
   color: var(--cor-primaria);
-  margin-top: 25px;
+  margin-top: 5px;
   margin-bottom: 10px;
   animation: fadeInUp var(--duracao) var(--ease);
 }
-
 p {
   margin-bottom: 15px;
-  text-align: justify;
+  text-align: center;
   animation: fadeIn var(--duracao) var(--ease);
 }
 
-/* ------------------------------
-   VÍDEOS E IMAGENS
--------------------------------*/
+/* ---------------------
+      Vídeo & Imagem
+---------------------- */
 .video {
   text-align: center;
   margin: 25px 0;
   animation: zoomIn var(--duracao) var(--ease);
 }
-
 iframe {
   width: 100%;
   max-width: 560px;
@@ -246,7 +172,6 @@ iframe {
   border-radius: var(--radius);
   box-shadow: var(--sombra);
 }
-
 img {
   max-width: 100%;
   height: auto;
@@ -258,15 +183,14 @@ img {
   transform: translateY(30px);
   transition: all 0.6s var(--ease);
 }
-
 img.visivel {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* ------------------------------
-   ASIDE (CURIOSIDADES)
--------------------------------*/
+/* ---------------------
+      Aside (Curiosidades)
+---------------------- */
 aside {
   background: #e0f2f1;
   border-left: 5px solid var(--cor-secundaria);
@@ -277,196 +201,58 @@ aside {
   animation: fadeInUp var(--duracao) var(--ease);
   transition: background-color 0.5s var(--ease);
 }
-
 body.dark-mode aside {
-  background: #0f2625;
+  background: #113e3d;
+  color: #f1f1f1;
 }
 
-/* ------------------------------
-   RODAPÉ
--------------------------------*/
-footer {
-  background: var(--cor-primaria);
-  color: #fff;
-  text-align: center;
-  padding: 20px;
-  font-size: 0.95rem;
-  margin-top: 40px;
-  animation: fadeInUp var(--duracao) var(--ease);
-}
-
-footer a {
-  color: var(--cor-destaque);
-  text-decoration: none;
-  transition: color 0.3s var(--ease);
-}
-
-footer a:hover {
-  text-decoration: underline;
-  color: #ffa270;
-}
-
-/* ------------------------------
-   BOTÃO "TOPO"
--------------------------------*/
-#btnTopo {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  background-color: var(--cor-primaria);
-  color: white;
-  border: none;
-  padding: 12px 16px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: none;
-  box-shadow: var(--sombra);
-  font-size: 1.2rem;
-  transition: all 0.3s var(--ease);
-}
-
-#btnTopo:hover {
-  background-color: var(--cor-secundaria);
-  transform: scale(1.1);
-}
-
-/* ------------------------------
-   ANIMAÇÕES (keyframes)
--------------------------------*/
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideIn {
-  from { opacity: 0; transform: translateX(-50px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes zoomIn {
-  from { transform: scale(0.8); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-/* ------------------------------
-   RESPONSIVIDADE
--------------------------------*/
-@media (max-width: 768px) {
-  header h1 {
-    font-size: 1.6rem;
-  }
-
-  nav a {
-    display: inline-block;
-    margin: 8px;
-    font-size: 0.9rem;
-  }
-
-  aside ul {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-@media (max-width: 480px) {
-  header p {
-    font-size: 0.95rem;
-  }
-
-  iframe {
-    height: 220px;
-  }
-
-  main {
-    padding: 15px;
-  }
-}
-/* === Tema automático (modo claro/escuro) === */
-:root {
-  --cor-primaria: #0077b6;
-  --cor-secundaria: #ffb703;
-  --bg-claro: #f5f9ff;
-  --bg-escuro: #0d1b2a;
-  --texto-claro: #f8f9fa;
-  --texto-escuro: #1b263b;
-}
-
-/* Detecta modo escuro do sistema */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --cor-primaria: #90e0ef;
-    --cor-secundaria: #ffd166;
-    --bg-claro: #0d1b2a;
-    --bg-escuro: #000814;
-    --texto-claro: #e0e1dd;
-    --texto-escuro: #ffffff;
-  }
-}
-
-/* === Bloco Lagostas Raras === */
+/* ----------------------
+  Galeria Lagostas Raras
+------------------------ */
 .lagostas-raras {
-  background: linear-gradient(135deg, var(--bg-escuro), #001d3d);
-  color: var(--texto-claro);
+  background: linear-gradient(135deg, #0d1b2a, #001d3d);
+  color: #f1f1f1;
   padding: 40px 20px;
   border-radius: 20px;
   margin-top: 40px;
   text-align: center;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
-  animation: fadeInUp 1s ease;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: fadeInUp var(--duracao) var(--ease);
+  border: 1px solid rgba(255,255,255,0.08);
 }
-
 .lagostas-raras h3 {
-  font-size: 1.8em;
-  margin-bottom: 25px;
-  background: linear-gradient(90deg, var(--cor-secundaria), var(--cor-primaria));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+  font-size: 1.6em;
+  margin-bottom: 20px;
+  color: var(--cor-destaque);
+  text-shadow: 0 0 10px rgba(255, 183, 3, 0.5);
 }
-
-/* Galeria Responsiva */
 .galeria-lagostas {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 30px;
+  gap: 25px;
 }
-
 .galeria-lagostas img {
   width: 220px;
   height: 160px;
   object-fit: cover;
-  border-radius: 14px;
-  border: 3px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  border-radius: 12px;
+  border: 2px solid #fff;
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
-
-/* Efeito ao passar o mouse */
 .galeria-lagostas img:hover {
   transform: scale(1.08) rotate(-1deg);
-  box-shadow: 0 0 25px var(--cor-secundaria);
-  border-color: var(--cor-secundaria);
+  box-shadow: 0 0 25px var(--cor-destaque);
+  border-color: var(--cor-destaque);
 }
 
-/* === Tooltip moderno === */
+/* Tooltip */
 .tooltip {
   position: relative;
   display: inline-block;
   cursor: pointer;
 }
-
 .tooltip .tooltiptext {
   visibility: hidden;
   opacity: 0;
@@ -487,59 +273,35 @@ footer a:hover {
   pointer-events: none;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
 }
-
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
   transform: translateX(-50%) translateY(-5px);
 }
 
-/* Animação de entrada suave */
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Modo responsivo */
-@media (max-width: 600px) {
-  .galeria-lagostas img {
-    width: 100%;
-    max-width: 300px;
-  }
-  .tooltip .tooltiptext {
-    width: 200px;
-    font-size: 0.85em;
-  }
-}
+/* ---------------------
+   Notícias e Pesquisa
+---------------------- */
 .noticias-curiosidades {
   text-align: center;
   background: linear-gradient(135deg, #001d3d, #003566);
   color: #f1f1f1;
-  padding: 50px 20px;
+  padding: 20px 20px;
   border-radius: 20px;
-  margin-top: 50px;
+  margin-top: 20px;
   box-shadow: 0 0 25px rgba(0,0,0,0.6);
-  animation: fadeInUp 1s ease;
+  animation: fadeInUp var(--duracao) var(--ease);
 }
-
 .noticias-curiosidades h2 {
   font-size: 2em;
   margin-bottom: 15px;
-  color: #ffd166;
+  color: var(--cor-destaque);
 }
-
 .noticias-curiosidades p {
   font-size: 1.1em;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: #e0e1dd;
 }
-
 .pesquisa-web {
   display: flex;
   justify-content: center;
@@ -548,30 +310,26 @@ footer a:hover {
   flex-wrap: wrap;
   margin-bottom: 15px;
 }
-
 .pesquisa-web input[type="text"] {
   width: 280px;
   padding: 10px 15px;
   border-radius: 12px;
-  border: 1px solid #ffd166;
+  border: 1px solid var(--cor-destaque);
   outline: none;
   font-size: 1em;
   transition: 0.3s;
   background-color: rgba(255,255,255,0.1);
   color: #fff;
 }
-
 .pesquisa-web input[type="text"]::placeholder {
   color: #bbb;
 }
-
 .pesquisa-web input[type="text"]:focus {
-  border-color: #90e0ef;
-  box-shadow: 0 0 10px #90e0ef;
+  border-color: var(--cor-secundaria);
+  box-shadow: 0 0 10px var(--cor-secundaria);
 }
-
 .pesquisa-web button {
-  background: linear-gradient(90deg, #90e0ef, #ffd166);
+  background: linear-gradient(90deg, var(--cor-primaria), var(--cor-destaque));
   border: none;
   padding: 10px 20px;
   border-radius: 12px;
@@ -581,16 +339,107 @@ footer a:hover {
   cursor: pointer;
   transition: all 0.3s ease;
 }
-
 .pesquisa-web button:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 15px #ffd166;
+  box-shadow: 0 0 15px var(--cor-destaque);
 }
-
 .dicas-temas p {
-  font-size: 0.9em;
+  font-size: 1.1em;
   color: #ccc;
   margin-top: 10px;
+}
+
+/* ---------------------
+      Rodapé
+---------------------- */
+footer {
+  background: var(--cor-primaria);
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.95rem;
+  margin-top: 40px;
+  animation: fadeInUp var(--duracao) var(--ease);
+}
+footer a {
+  color: var(--cor-destaque);
+  text-decoration: none;
+  transition: color 0.3s var(--ease);
+}
+footer a:hover {
+  text-decoration: underline;
+  color: #ffa270;
+}
+
+/* ---------------------
+      Botão "Topo"
+---------------------- */
+#btnTopo {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background-color: var(--cor-primaria);
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+  box-shadow: var(--sombra);
+  font-size: 1.2rem;
+  transition: all 0.3s var(--ease);
+}
+#btnTopo:hover, #btnTopo:focus {
+  background-color: var(--cor-secundaria);
+  transform: scale(1.1);
+  outline: 2px solid var(--cor-destaque);
+  outline-offset: 2px;
+}
+
+
+/* ---------------------
+      Animações
+---------------------- */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideIn { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+/* ---------------------
+      Responsividade
+---------------------- */
+@media (max-width: 600px) {
+  header h1 { font-size: 1.6rem; }
+  nav a { display: inline-block; margin: 8px; font-size: 0.9rem; }
+  aside ul { flex-direction: column; align-items: center; }
+  .galeria-lagostas { gap: 12px; }
+}
+
+@media (max-width: 768px) {
+  .galeria-lagostas img {
+    width: 100%;
+    max-width: 300px;
+  }
+  .tooltip .tooltiptext {
+    width: 200px;
+    font-size: 0.85em;
+  }
+}
+
+@media (max-width: 900px) {
+  header p { font-size: 0.95rem; }
+  iframe { height: 220px; }
+  main { padding: 15px; }
+  nav {
+    flex-wrap: wrap;
+  max-width: 500px; /* exemplo para duas linhas */
+  margin: 0 auto;
+  }
+  nav a {
+    flex: 1 1 160px;
+  min-width: 120px;
+  }
 }
 
 
