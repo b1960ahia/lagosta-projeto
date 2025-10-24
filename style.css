@@ -359,9 +359,9 @@ footer {
   background: var(--cor-primaria);
   color: #fff;
   text-align: center;
-  padding: 20px;
-  font-size: 0.95rem;
-  margin-top: 40px;
+  padding: 5px;
+  font-size: 1.2rem;
+  margin-top: 20px;
   animation: fadeInUp var(--duracao) var(--ease);
 }
 footer a {
