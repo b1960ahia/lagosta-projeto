@@ -148,16 +148,30 @@ main {
   background-color: aquamarine;
 }
 article h1, article h2, article h3, article h4 {
+  font-size: 1.5rem;
+  font-style: italic;
   color: rgb(4, 65, 4);
   margin-top: 5px;
   margin-bottom: 10px;
   animation: fadeInUp var(--duracao) var(--ease);
 }
+article h1 {
+  font-size: 1.6rem;
+  text-align: center;
+}
+article h2 {
+  font-size: 1.6rem;
+  text-align: center;
+}
+article h4 {
+  font-size: 1.4rem;    
+}
+
 p {
   margin-bottom: 20px;
   margin-left: 10px;  
   animation: fadeIn var(--duracao) var(--ease);
-  font-size: 1em;
+  font-size: 1.5em;
 }
 
 /* ---------------------
@@ -206,7 +220,7 @@ aside {
 }
 body.dark-mode aside {
   background: #113e3d;
-  color: #f1f1f1;
+  color: #a88989;
 }
 
 /* ----------------------
@@ -240,7 +254,7 @@ body.dark-mode aside {
   height: 160px;
   object-fit: cover;
   border-radius: 12px;
-  border: 2px solid #fff;
+  border: 2px solid #dacece;
   box-shadow: 0 0 10px rgba(255,255,255,0.3);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
@@ -301,7 +315,7 @@ body.dark-mode aside {
   color: var(--cor-destaque);
 }
 .noticias-curiosidades p {
-  font-size: 1.1em;
+  font-size: 2em;
   margin-bottom: 10px;
   color: #e0e1dd;
 }
@@ -357,10 +371,12 @@ body.dark-mode aside {
 ---------------------- */
 footer {
   background: var(--cor-primaria);
-  color: #fff;
+  color: #78c6c9;
   text-align: center;
   padding: 5px;
   font-size: 1.2rem;
+  font-weight: bold;
+  font-style: italic;
   margin-top: 20px;
   animation: fadeInUp var(--duracao) var(--ease);
 }
@@ -412,7 +428,7 @@ footer a:hover {
 /* ---------------------
       Responsividade
 ---------------------- */
-@media (max-width: 600px) {
+@media (max-width: 450px) {
   header h1 { font-size: 1.6rem; }
   nav a { display: inline-block; margin: 8px; font-size: 0.9rem; }
   aside ul { flex-direction: column; align-items: center; }
