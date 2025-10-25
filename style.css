@@ -428,14 +428,14 @@ footer a:hover {
 /* ---------------------
       Responsividade
 ---------------------- */
-@media (max-width: 450px) {
+@media (max-width: 360px) {
   header h1 { font-size: 1.6rem; }
   nav a { display: inline-block; margin: 8px; font-size: 0.9rem; }
   aside ul { flex-direction: column; align-items: center; }
   .galeria-lagostas { gap: 12px; }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 360px) {
   .galeria-lagostas img {
     width: 100%;
     max-width: 300px;
@@ -446,13 +446,13 @@ footer a:hover {
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 360px) {
   header p { font-size: 0.95rem; }
   iframe { height: 220px; }
   main { padding: 15px; }
   nav {
     flex-wrap: wrap;
-  max-width: 500px; /* exemplo para duas linhas */
+  max-width: 300px; /* exemplo para duas linhas */
   margin: 0 auto;
   }
   nav a {
