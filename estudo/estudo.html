@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia da Pesca da Lagosta</title>
+    <link rel="shortcut icon" href="icons8-lagosta-50.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <style>
+       /* ---------------------------------
+   Tema Base com Variáveis Globais
+----------------------------------- */
+:root {
+  --cor-primaria: #004d40;
+  --cor-secundaria: #00796b;
+  --cor-fundo: #f1f8f6;
+  --cor-texto: #333;
+  --cor-destaque: #ff7043;
+  --sombra: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --radius: 12px;
+  --duracao: 0.6s;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.dark-mode {
+  --cor-primaria: #022d2b;
+  --cor-secundaria: #005b4f;
+  --cor-fundo: #101c1b;
+  --cor-texto: #e3e3e3;
+  --cor-destaque: #ffa270;
+  --sombra: 0 2px 8px rgba(255, 255, 255, 0.1);
+}
+
+/* Detecta modo escuro do sistema (opcional) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cor-primaria: #022d2b;
+    --cor-secundaria: #005b4f;
+    --cor-fundo: #101c1b;
+    --cor-texto: #e3e3e3;
+    --cor-destaque: #ffa270;
+    --sombra: 0 2px 8px rgba(255, 255, 255, 0.1);
+  }
+}
+
+/*Box Sizing Global*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ----------------------
+     Estilo Geral
+------------------------ */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  transition: background-color 0.5s var(--ease), color 0.5s var(--ease);
+}
+
+/* Foco visual */
+nav a:focus, #toggleTema:focus, .pesquisa-web input:focus, .pesquisa-web button:focus {
+  outline: 2px solid var(--cor-destaque);
+  outline-offset: 2px;
+}
+
+/* ----------------------
+      Cabeçalho
+------------------------ */
+header {
+  background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+  color: #fff;
+  text-align: center;
+  padding-bottom: 24px;
+  padding: 12px 6px 16px;
+  /* Menor altura no topo e fundo */
+  box-shadow: var(--sombra);
+  position: relative;
+  animation: fadeInDown var(--duracao) var(--ease);
+}
+
+header h1 {
+  
+  font-size: 3rem;      /* Menor, mas ainda destaque */
+  margin-bottom: 5px;      /* Menos espaço abaixo do título */
+  animation: slideIn var(--duracao) var(--ease);
+}
+
+header p {
+  color: aqua;
+  font-weight: bold;
+  font-size: 1.5rem;
+  font-style: oblique;  
+  max-width: 90vw;
+  margin: 0 auto 0;        /* Centralizado, menos espaço */
+  opacity: 0.85;  
+}
+
+/* ----------------------
+     Botão Tema
+------------------------ */
+#toggleTema {
+ position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 0.85rem;
+}
+#toggleTema:hover {
+  background-color: var(--cor-destaque);
+  color: #fff;
+}
+
+/* ----------------------
+      Navegação
+------------------------ */
+nav {
+  background-color: var(--cor-secundaria);
+  display: flex;
+  flex-wrap: wrap;         /* Permite quebrar em várias linhas */
+  justify-content: center; /* Centraliza os itens */
+  gap: 16px;               /* Espaço entre os links */
+  background-color: var(--cor-secundaria);
+  padding: 12px;
+  position: sticky;
+  padding-top: 5px;
+  z-index: 100;
+  animation: fadeIn var(--duracao) ease-in;
+ 
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+nav a:hover {
+  color: var(--cor-destaque);
+  transform: scale(1.1);
+}
+
+/* ----------------------
+    Conteúdo Principal
+------------------------ */
+main {
+  padding-top: 18px;
+  padding-bottom: 24px;
+  background-color: aquamarine;
+}
+article h1, article h2, article h3, article h4 {
+  font-size: 1.5rem;
+  font-style: italic;
+  color: rgb(4, 65, 4);
+  margin-top: 5px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  animation: fadeInUp var(--duracao) var(--ease);
+}
+article h1 {
+  font-size: 1.6rem;
+  text-align: center;
+}
+article h2 {
+  font-size: 1.6rem;
+  text-align: center;
+}
+article h4 {
+  font-size: 1.4rem;    
+}
+
+p {
+  color: #7a0f0f;
+  margin-bottom: 20px;
+  margin-left: 20px;  
+  animation: fadeIn var(--duracao) var(--ease);
+  font-size: 1.5em;
+}
+
+/* ---------------------
+      Vídeo & Imagem
+---------------------- */
+.video {
+  text-align: center;
+  margin: 25px 0;
+  animation: zoomIn var(--duracao) var(--ease);
+}
+iframe {
+  width: 100%;
+  max-width: 100%;
+  height: 240px;
+  border-radius: var(--radius);
+  box-shadow: var(--sombra);
+}
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  margin: 15px auto;
+  display: block;
+  box-shadow: var(--sombra);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s var(--ease);
+}
+img.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------------------
+      Aside (Curiosidades)
+---------------------- */
+aside {
+  background: #e0f2f1;
+  border-left: 5px solid var(--cor-secundaria);
+  padding: 20px;
+  margin:20px 0px;
+  border-radius: var(--radius);
+  box-shadow: var(--sombra);
+  animation: fadeInUp var(--duracao) var(--ease);
+  transition: background-color 0.5s var(--ease);
+}
+body.dark-mode aside {
+  background: #113e3d;
+  color: #a88989;
+}
+
+/* ----------------------
+  Galeria Lagostas Raras
+------------------------ */
+.lagostas-raras {
+  background: linear-gradient(135deg, #0d1b2a, #001d3d);
+  color: #f1f1f1;
+  padding: 40px 20px;
+  border-radius: 20px;
+  margin-top: 40px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+  animation: fadeInUp var(--duracao) var(--ease);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.lagostas-raras h3 {
+  font-size: 1.6em;
+  margin-bottom: 20px;
+  color: var(--cor-destaque);
+  text-shadow: 0 0 10px rgba(255, 183, 3, 0.5);
+}
+.galeria-lagostas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+.galeria-lagostas img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid #dacece;
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.galeria-lagostas img:hover {
+  transform: scale(1.08) rotate(-1deg);
+  box-shadow: 0 0 25px var(--cor-destaque);
+  border-color: var(--cor-destaque);
+}
+
+/* Tooltip */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+.tooltip .tooltiptext {
+  visibility: hidden;
+  opacity: 0;
+  width: 100%;
+  background: rgba(10, 10, 10, 0.9);
+  color: #fff;
+  text-align: center;
+  border-radius: 12px;
+  padding: 12px 14px;
+  position: absolute;
+  z-index: 10;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%) translateY(5px);
+  transition: opacity 0.5s ease, transform 0.4s ease;
+  font-size: 0.9em;
+  line-height: 1.5;
+  pointer-events: none;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+/* ---------------------
+   Notícias e Pesquisa
+---------------------- */
+.noticias-curiosidades {
+  text-align: center;
+  background: linear-gradient(135deg, #001d3d, #003566);
+  color: #f1f1f1;
+  padding: 20px 20px;
+  border-radius: 20px;
+  margin-top: 20px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+  animation: fadeInUp var(--duracao) var(--ease);
+}
+.noticias-curiosidades h2 {
+  font-size: 2em;
+  margin-bottom: 15px;
+  color: var(--cor-destaque);
+}
+.noticias-curiosidades p {
+  font-size: 2em;
+  margin-bottom: 10px;
+  color: #e0e1dd;
+}
+.pesquisa-web {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+.pesquisa-web input[type="text"] {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 12px;
+  border: 1px solid var(--cor-destaque);
+  outline: none;
+  font-size: 1em;
+  transition: 0.3s;
+  background-color: rgba(255,255,255,0.1);
+  color: #fff;
+}
+.pesquisa-web input[type="text"]::placeholder {
+  color: #bbb;
+}
+.pesquisa-web input[type="text"]:focus {
+  border-color: var(--cor-secundaria);
+  box-shadow: 0 0 10px var(--cor-secundaria);
+}
+.pesquisa-web button {
+  background: linear-gradient(90deg, var(--cor-primaria), var(--cor-destaque));
+  border: none;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-size: 1em;
+  font-weight: bold;
+  color: #001d3d;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.pesquisa-web button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px var(--cor-destaque);
+}
+.dicas-temas p {
+  font-size: 1.1em;
+  color: #ccc;
+  margin-top: 10px;
+}
+
+/* ---------------------
+      Rodapé
+---------------------- */
+footer {
+  background: var(--cor-primaria);
+  color: #78c6c9;
+  text-align: center;
+  padding: 5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-style: italic;
+  margin-top: 20px;
+  animation: fadeInUp var(--duracao) var(--ease);
+}
+footer a {
+  color: var(--cor-destaque);
+  text-decoration: none;
+  transition: color 0.3s var(--ease);
+}
+footer a:hover {
+  text-decoration: underline;
+  color: #ffa270;
+}
+
+/* ---------------------
+      Botão "Topo"
+---------------------- */
+#btnTopo {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background-color: var(--cor-primaria);
+  color: rgb(77, 27, 27);
+  border: none;
+  padding: 12px 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+  box-shadow: var(--sombra);
+  font-size: 1.2rem;
+  transition: all 0.3s var(--ease);
+}
+#btnTopo:hover, #btnTopo:focus {
+  background-color: var(--cor-secundaria);
+  transform: scale(1.1);
+  outline: 2px solid var(--cor-destaque);
+  outline-offset: 2px;
+}
+
+
+/* ---------------------
+      Animações
+---------------------- */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideIn { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+/* ---------------------
+      Responsividade
+---------------------- */
+@media (max-width: 100%) {
+  header h1 { font-size: 1.6rem; }
+  nav a { display: inline-block; margin: 8px; font-size: 0.9rem; }
+  aside ul { flex-direction: column; align-items: center; }
+  .galeria-lagostas { gap: 12px; }
+}
+
+@media (max-width: 100%) {
+  .galeria-lagostas img {
+    width: 100%;
+    max-width: 300px;
+  }
+  .tooltip .tooltiptext {
+    width: 100%;
+    font-size: 0.85em;
+  }
+}
+
+@media (max-width: 100%) {
+  header p { font-size: 0.95rem; }
+  iframe { height: 220px; }
+  main { padding: 15px; }
+  nav {
+    flex-wrap: wrap;
+  max-width: 100%; /* exemplo para duas linhas */
+  margin: 0 auto;
+  }
+  nav a {
+    flex: 1 1 160px;
+  min-width: 120px;
+  }
+}
+  
+  </style>
+  
+</head>
+<body>
+    <button id="btnTopo" title="Voltar ao topo">↑</button>   
+    <header>
+        <button id="toggleTema">🌞/🌙</button>
+
+        <h1>As Formas de Captura da  Lagosta</h1>
+        <p>Conheça todas as etapas, curiosidades e riscos, da pesca da Lagosta,  em um único lugar</p>
+                
+    </header>
+    <nav>
+       
+        <section id="noticias" class="noticias-curiosidades">
+  <h2>Notícias e Curiosidades</h2>
+  <p>Pesquise novidades e fatos curiosos sobre o mundo marítimo, a pesca da lagosta e o oceano.</p>
+
+  <form class="pesquisa-web" action="https://www.google.com/search" method="get" target="_blank">
+    <input type="text" name="q" placeholder="Pesquisar na web..." required>
+    <input type="hidden" name="as_sitesearch" value="">
+    <button type="submit">🔍 Pesquisar</button>
+  </form>
+
+  <div class="dicas-temas">
+    <p>Exemplos: <em>“lagosta azul”, “pesca artesanal no Brasil”, “mudanças climáticas e oceanos”</em></p>
+  </div>
+</section>
+
+
+    </nav>
+    <main>
+        <article>
+            <h1>As lagostas são criaturas fascinantes e cheias de curiosidades</h1>
+            <div class="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/IBLHbru-JBw?si=FbKUnyH2XjbgeEd6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+            <p><strong>Lagostas</strong> podem viver mais de 100 anos! Elas não envelhecem da mesma forma que outros animais, pois produzem uma <strong>enzima (telomerase)</strong> que repara seu DNA continuamente.  O sangue da lagosta é azul devido à presença de hemocianina, uma proteína rica em cobre que transporta oxigênio (nos humanos, é a hemoglobina, que contém ferro e dá a cor vermelha).  Elas precisam <strong>trocar de carapaça</strong> (muda) para crescer. Nesse processo, ficam extremamente vulneráveis até que a nova carapaça endureça.  </p>
+            <img src="Funçao da garra.jpg" alt="raras">
+            <p>Lagostas têm uma garra maior e mais forte (para esmagar) e outra menor e afiada (para cortar). Curiosamente, se perderem uma, podem desenvolver uma nova com a função oposta!  Elas nadam para trás quando precisam fugir rapidamente, dobrando a cauda sob o corpo. Mas normalmente andam para frente no fundo do mar.  Em cativeiro, podem se tornar canibais, mas na natureza isso é raro. Normalmente se alimentam de peixes, moluscos e outros invertebrados. </p> 
+            
+            <p>Lagostas não sobrevivem em água doce ou gelada. Se expostas a temperaturas muito baixas, entram em choque e morrem.  O coração da lagosta fica atrás da cabeça! E se parar, um simples estímulo (como um choque) pode fazê-lo voltar a bater.  Elas podem regenerar patas, garras e até olhos perdidos, mas demora várias mudas para ficarem como novas.  No século XIX, lagostas eram consideradas "comida de prisioneiros e pobres" nos EUA. Só no século XX virou um prato sofisticado.  </p>
+                        
+            <aside class="lagostas-raras">
+    <h3>Lagostas com cores raras devido a mutações genéticas</h3>
+    <div class="galeria-lagostas">
+
+        <div class="tooltip">
+            <img src="lagosta azul.jpeg" alt="Lagosta Azul">
+            <div class="tooltiptext">
+                🩵 <strong>Lagosta Azul</strong><br>
+                Mutação genética altera a proteína <em>crustacyanin</em>, criando o tom azul intenso.<br>
+                Ocorre em cerca de <strong>1 em 2 milhões</strong>.
+            </div>
+        </div>
+
+        <div class="tooltip">
+            <img src="lagosta laranja.jpeg" alt="Lagosta Laranja">
+            <div class="tooltiptext">
+                🧡 <strong>Lagosta Laranja / Dourada</strong><br>
+                Alteração genética reduz pigmentos, gerando tons laranja ou amarelos.<br>
+                Raridade aproximada: <strong>1 em 30 milhões</strong>.
+            </div>
+        </div>
+
+        <div class="tooltip">
+            <img src="bicolor.jpeg" alt="Lagosta Bicolor">
+            <div class="tooltiptext">
+                💙🧡 <strong>Lagosta Bicolor</strong><br>
+                Exibe duas cores distintas no corpo (geralmente divididas ao meio).<br>
+                Raridade estimada: <strong>1 em 50 milhões</strong>.
+            </div>
+        </div>
+
+        <div class="tooltip">
+            <img src="lagosta albina.jpeg" alt="Lagosta Albina">
+            <div class="tooltiptext">
+                🤍 <strong>Lagosta Albina</strong><br>
+                Ausência de pigmentos naturais no exoesqueleto.<br>
+                Considerada a mais rara: <strong>1 em 100 milhões</strong>.
+            </div>
+        </div>
+
+    </div>
+</aside>
+
+            <h2>Métodos Eficazes para Pescar Lagosta </h2>
+            <p>A pesca de lagosta é uma atividade tradicional em muitas regiões costeiras, tanto para fins comerciais quanto recreativos. Conhecer as técnicas adequadas é essencial para garantir uma captura eficiente e sustentável. Neste artigo, exploraremos os principais métodos utilizados para pescar lagosta.  </p>
+                            
+            <h3>1. Pesca com Covos (Armadilhas) </h3>                  
+            <img src="manzua.jpg" alt="desc">
+            <p>O método mais comum e sustentável para capturar lagostas é o uso de covos, também conhecidos como armadilhas ou pots.</p>
+            <h4>Funcionamento:</h4> <p>Os covos são gaiolas de metal ou madeira com uma entrada em forma de funil, que permite a entrada da lagosta, mas dificulta sua saída.</p>
+            <h4>Iscas:</h4> <p>Peixes mortos (como sardinha ou cavala) são usados como atrativos. </p>
+            <h4>Localização:</h4> <p>São colocados no fundo do mar, em áreas rochosas ou próximas a recifes, onde as lagostas se escondem.</p>
+            <h4>Vantagens:</h4> <p>Método seletivo, que causa pouco impacto ao meio ambiente.</p>
+                
+            <h3>2. Mergulho Livre ou com Escafandro</h3>
+            <p>Em algumas regiões, lagostas são capturadas manualmente por mergulhadores.</p>
+            <h4>Vantagens:</h4>      <p>Permite a seleção de lagostas no tamanho certo, evitando a captura de exemplares jovens.</p>
+            <h4>Técnica:</h4> <p>O mergulhador busca as lagostas em fendas de rochas ou corais, usando um gancho para retirá-las com cuidado.</p>
+            <h4>Regulamentação:</h4> <p>Em muitos lugares, é proibido o uso de equipamentos de mergulho autônomo (SCUBA) para pesca comercial de lagosta, visando evitar a sobrepes</p>
+        
+            <h3>3. Pesca com Redes</h3>
+            <p>Embora menos comum, algumas técnicas de pesca com redes podem ser utilizadas:</p>         
+                <h4>Redes de Emalhar:</h4><p> Usadas em águas mais profundas, mas com risco de capturar outras espécies acidentalmente.</p>
+            
+            <h4>Cerco em Áreas Rasas:</h4><p> Em locais com muitas lagostas, redes podem ser utilizadas para cercá-las, mas esse método é menos seletivo.</p>
+        
+            <h3>4. Pesca com Gancho (Foques)</h3>
+            <p>Em algumas culturas tradicionais, um gancho longo (chamado de "foque" no Brasil) é usado para fisgar lagostas escondidas em buracos.</p>
+            <h4>Técnica:</h4> <p>O pescador insere o gancho na toca e puxa a lagosta com cuidado.</p>
+            <h4>Desvantagem:</h4> <p>Pode danificar o animal se não for feito corretamente.</p>
+        
+            <h3>5. Captura Noturna (À Mão)</h3>
+            <p>Alguns pescadores aproveitam o fato de as lagostas saírem à noite para se alimentar e as capturam manualmente em águas rasas, usando lanternas e luvas para proteção.</p>
+        
+            <h3>6. Uso de Compressores (Pesca com Mergulho sem Regulamentação)</h3>
+            
+            <img src="pesca compressor2.jpg" alt="desc">
+            <h4>Risco:</h4> <p>Mergulhadores utilizam compressores de ar caseiros, muitas vezes em grandes profundidades, para capturar lagostas manualmente.</p>  
+            <h4>Consequências:</h4> <p>Acidentes fatais (doença descompressiva, embolia pulmonar).
+            </p>            
+            <h2>Considerações Importantes </h2>
+            <h4>Tamanho Mínimo:</h4><p> Respeite as regulamentações locais sobre o tamanho mínimo para captura.</p>  
+            <h4>Período de Defeso:</h4> <p>Evite pescar durante a época de reprodução.  </p>
+            <h4>Licenças:</h4><p> Em muitos países, é necessário ter autorização para pescar lagosta comercialmente. </p> 
+
+            <h2>Conclusão</h2>  
+            <p>
+                A pesca de lagosta exige técnicas específicas para garantir a sustentabilidade da espécie. Entre os métodos mais utilizados, os covos e o mergulho manual são os mais recomendados por seu baixo impacto ambiental. Sempre siga as normas de pesca responsável para preservar esse valioso recurso marinho.
+                Se você pratica ou pretende começar a pescar lagosta, informe-se sobre as leis locais e adote boas práticas para contribuir com a conservação dos oceanos.
+            </p>
+            <p>Então é isso! Espero que você tenha gostado do nosso artigo com essa curiosidade sobre a pesca da Lagosta e curiosidades sobre esse crustáceo.</p>
+                    
+            <footer>Site criado por João Bahia para o seu <a href="https://github.com/b1960ahia/JBahia">Github.</a></footer>
+
+        </article>
+    </main>  
+   <script>
+  // --- BOTÃO TOPO ---
+  window.onscroll = function() {
+    document.getElementById("btnTopo").style.display =
+      (document.documentElement.scrollTop > 200) ? "block" : "none";
+  };
+
+  // --- REVEAL DE IMAGENS ---
+  const imgs = document.querySelectorAll('img');
+  const revelar = () => {
+    imgs.forEach(img => {
+      const topo = img.getBoundingClientRect().top;
+      if (topo < window.innerHeight - 100) img.classList.add('visivel');
+    });
+  };
+  window.addEventListener('scroll', revelar);
+  window.addEventListener('load', revelar);
+
+  // --- TEMA CLARO / ESCURO ---
+  const btnTema = document.getElementById('toggleTema');
+  const body = document.body;
+  const temaSalvo = localStorage.getItem('tema');
+  if (temaSalvo === 'dark') body.classList.add('dark-mode');
+
+  btnTema.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    const temaAtual = body.classList.contains('dark-mode') ? 'dark' : 'light';
+    localStorage.setItem('tema', temaAtual);
+  });
+   // Exibe o botão quando rolar mais que 200px
+  window.onscroll = function() {
+    const btn = document.getElementById("btnTopo");
+    btn.style.display = (document.documentElement.scrollTop > 200) ? "block" : "none";
+  };
+
+  // Volta ao topo suave ao clicar no botão
+  document.getElementById("btnTopo").onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+</script>
+
+
+</body>
+</html>
