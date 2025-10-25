@@ -168,7 +168,7 @@ article h4 {
 }
 
 p {
-  color: #000;
+  color: #7a0f0f;
   margin-bottom: 20px;
   margin-left: 10px;  
   animation: fadeIn var(--duracao) var(--ease);
