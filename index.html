@@ -6,6 +6,472 @@
     <title>Historia da Pesca da Lagosta</title>
     <link rel="shortcut icon" href="icons8-lagosta-50.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
+    <style>
+       /* ---------------------------------
+   Tema Base com Variáveis Globais
+----------------------------------- */
+:root {
+  --cor-primaria: #004d40;
+  --cor-secundaria: #00796b;
+  --cor-fundo: #f1f8f6;
+  --cor-texto: #333;
+  --cor-destaque: #ff7043;
+  --sombra: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --radius: 12px;
+  --duracao: 0.6s;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.dark-mode {
+  --cor-primaria: #022d2b;
+  --cor-secundaria: #005b4f;
+  --cor-fundo: #101c1b;
+  --cor-texto: #e3e3e3;
+  --cor-destaque: #ffa270;
+  --sombra: 0 2px 8px rgba(255, 255, 255, 0.1);
+}
+
+/* Detecta modo escuro do sistema (opcional) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cor-primaria: #022d2b;
+    --cor-secundaria: #005b4f;
+    --cor-fundo: #101c1b;
+    --cor-texto: #e3e3e3;
+    --cor-destaque: #ffa270;
+    --sombra: 0 2px 8px rgba(255, 255, 255, 0.1);
+  }
+}
+
+/*Box Sizing Global*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ----------------------
+     Estilo Geral
+------------------------ */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  transition: background-color 0.5s var(--ease), color 0.5s var(--ease);
+}
+
+/* Foco visual */
+nav a:focus, #toggleTema:focus, .pesquisa-web input:focus, .pesquisa-web button:focus {
+  outline: 2px solid var(--cor-destaque);
+  outline-offset: 2px;
+}
+
+/* ----------------------
+      Cabeçalho
+------------------------ */
+header {
+  background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+  color: #fff;
+  text-align: center;
+  padding-bottom: 24px;
+  padding: 12px 6px 16px;
+  /* Menor altura no topo e fundo */
+  box-shadow: var(--sombra);
+  position: relative;
+  animation: fadeInDown var(--duracao) var(--ease);
+}
+
+header h1 {
+  
+  font-size: 3rem;      /* Menor, mas ainda destaque */
+  margin-bottom: 5px;      /* Menos espaço abaixo do título */
+  animation: slideIn var(--duracao) var(--ease);
+}
+
+header p {
+  font-size: 1.5rem;
+  font-style: oblique;  
+  max-width: 98vw;
+  margin: 0 auto 0;        /* Centralizado, menos espaço */
+  opacity: 0.85;  
+}
+
+/* ----------------------
+     Botão Tema
+------------------------ */
+#toggleTema {
+ position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 0.85rem;
+}
+#toggleTema:hover {
+  background-color: var(--cor-destaque);
+  color: #fff;
+}
+
+/* ----------------------
+      Navegação
+------------------------ */
+nav {
+  background-color: var(--cor-secundaria);
+  display: flex;
+  flex-wrap: wrap;         /* Permite quebrar em várias linhas */
+  justify-content: center; /* Centraliza os itens */
+  gap: 16px;               /* Espaço entre os links */
+  background-color: var(--cor-secundaria);
+  padding: 12px;
+  position: sticky;
+  padding-top: 5px;
+  z-index: 100;
+  animation: fadeIn var(--duracao) ease-in;
+ 
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+nav a:hover {
+  color: var(--cor-destaque);
+  transform: scale(1.1);
+}
+
+/* ----------------------
+    Conteúdo Principal
+------------------------ */
+main {
+  padding-top: 18px;
+  padding-bottom: 24px;
+  background-color: aquamarine;
+}
+article h1, article h2, article h3, article h4 {
+  font-size: 1.5rem;
+  font-style: italic;
+  color: rgb(4, 65, 4);
+  margin-top: 5px;
+  margin-bottom: 10px;
+  animation: fadeInUp var(--duracao) var(--ease);
+}
+article h1 {
+  font-size: 1.6rem;
+  text-align: center;
+}
+article h2 {
+  font-size: 1.6rem;
+  text-align: center;
+}
+article h4 {
+  font-size: 1.4rem;    
+}
+
+p {
+  color: #7a0f0f;
+  margin-bottom: 20px;
+  margin-left: 10px;  
+  animation: fadeIn var(--duracao) var(--ease);
+  font-size: 1.5em;
+}
+
+/* ---------------------
+      Vídeo & Imagem
+---------------------- */
+.video {
+  text-align: center;
+  margin: 25px 0;
+  animation: zoomIn var(--duracao) var(--ease);
+}
+iframe {
+  width: 100%;
+  max-width: 560px;
+  height: 315px;
+  border-radius: var(--radius);
+  box-shadow: var(--sombra);
+}
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  margin: 15px auto;
+  display: block;
+  box-shadow: var(--sombra);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s var(--ease);
+}
+img.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------------------
+      Aside (Curiosidades)
+---------------------- */
+aside {
+  background: #e0f2f1;
+  border-left: 5px solid var(--cor-secundaria);
+  padding: 20px;
+  margin: 30px 0;
+  border-radius: var(--radius);
+  box-shadow: var(--sombra);
+  animation: fadeInUp var(--duracao) var(--ease);
+  transition: background-color 0.5s var(--ease);
+}
+body.dark-mode aside {
+  background: #113e3d;
+  color: #a88989;
+}
+
+/* ----------------------
+  Galeria Lagostas Raras
+------------------------ */
+.lagostas-raras {
+  background: linear-gradient(135deg, #0d1b2a, #001d3d);
+  color: #f1f1f1;
+  padding: 40px 20px;
+  border-radius: 20px;
+  margin-top: 40px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+  animation: fadeInUp var(--duracao) var(--ease);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.lagostas-raras h3 {
+  font-size: 1.6em;
+  margin-bottom: 20px;
+  color: var(--cor-destaque);
+  text-shadow: 0 0 10px rgba(255, 183, 3, 0.5);
+}
+.galeria-lagostas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+.galeria-lagostas img {
+  width: 220px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid #dacece;
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.galeria-lagostas img:hover {
+  transform: scale(1.08) rotate(-1deg);
+  box-shadow: 0 0 25px var(--cor-destaque);
+  border-color: var(--cor-destaque);
+}
+
+/* Tooltip */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+.tooltip .tooltiptext {
+  visibility: hidden;
+  opacity: 0;
+  width: 240px;
+  background: rgba(10, 10, 10, 0.9);
+  color: #fff;
+  text-align: center;
+  border-radius: 12px;
+  padding: 12px 14px;
+  position: absolute;
+  z-index: 10;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%) translateY(5px);
+  transition: opacity 0.5s ease, transform 0.4s ease;
+  font-size: 0.9em;
+  line-height: 1.5;
+  pointer-events: none;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+/* ---------------------
+   Notícias e Pesquisa
+---------------------- */
+.noticias-curiosidades {
+  text-align: center;
+  background: linear-gradient(135deg, #001d3d, #003566);
+  color: #f1f1f1;
+  padding: 20px 20px;
+  border-radius: 20px;
+  margin-top: 20px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+  animation: fadeInUp var(--duracao) var(--ease);
+}
+.noticias-curiosidades h2 {
+  font-size: 2em;
+  margin-bottom: 15px;
+  color: var(--cor-destaque);
+}
+.noticias-curiosidades p {
+  font-size: 2em;
+  margin-bottom: 10px;
+  color: #e0e1dd;
+}
+.pesquisa-web {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+.pesquisa-web input[type="text"] {
+  width: 280px;
+  padding: 10px 15px;
+  border-radius: 12px;
+  border: 1px solid var(--cor-destaque);
+  outline: none;
+  font-size: 1em;
+  transition: 0.3s;
+  background-color: rgba(255,255,255,0.1);
+  color: #fff;
+}
+.pesquisa-web input[type="text"]::placeholder {
+  color: #bbb;
+}
+.pesquisa-web input[type="text"]:focus {
+  border-color: var(--cor-secundaria);
+  box-shadow: 0 0 10px var(--cor-secundaria);
+}
+.pesquisa-web button {
+  background: linear-gradient(90deg, var(--cor-primaria), var(--cor-destaque));
+  border: none;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-size: 1em;
+  font-weight: bold;
+  color: #001d3d;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.pesquisa-web button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px var(--cor-destaque);
+}
+.dicas-temas p {
+  font-size: 1.1em;
+  color: #ccc;
+  margin-top: 10px;
+}
+
+/* ---------------------
+      Rodapé
+---------------------- */
+footer {
+  background: var(--cor-primaria);
+  color: #78c6c9;
+  text-align: center;
+  padding: 5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-style: italic;
+  margin-top: 20px;
+  animation: fadeInUp var(--duracao) var(--ease);
+}
+footer a {
+  color: var(--cor-destaque);
+  text-decoration: none;
+  transition: color 0.3s var(--ease);
+}
+footer a:hover {
+  text-decoration: underline;
+  color: #ffa270;
+}
+
+/* ---------------------
+      Botão "Topo"
+---------------------- */
+#btnTopo {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background-color: var(--cor-primaria);
+  color: rgb(77, 27, 27);
+  border: none;
+  padding: 12px 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+  box-shadow: var(--sombra);
+  font-size: 1.2rem;
+  transition: all 0.3s var(--ease);
+}
+#btnTopo:hover, #btnTopo:focus {
+  background-color: var(--cor-secundaria);
+  transform: scale(1.1);
+  outline: 2px solid var(--cor-destaque);
+  outline-offset: 2px;
+}
+
+
+/* ---------------------
+      Animações
+---------------------- */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideIn { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+/* ---------------------
+      Responsividade
+---------------------- */
+@media (max-width: 360px) {
+  header h1 { font-size: 1.6rem; }
+  nav a { display: inline-block; margin: 8px; font-size: 0.9rem; }
+  aside ul { flex-direction: column; align-items: center; }
+  .galeria-lagostas { gap: 12px; }
+}
+
+@media (max-width: 360px) {
+  .galeria-lagostas img {
+    width: 100%;
+    max-width: 300px;
+  }
+  .tooltip .tooltiptext {
+    width: 200px;
+    font-size: 0.85em;
+  }
+}
+
+@media (max-width: 360px) {
+  header p { font-size: 0.95rem; }
+  iframe { height: 220px; }
+  main { padding: 15px; }
+  nav {
+    flex-wrap: wrap;
+  max-width: 300px; /* exemplo para duas linhas */
+  margin: 0 auto;
+  }
+  nav a {
+    flex: 1 1 160px;
+  min-width: 120px;
+  }
+}
+  
+  </style>
+  
 </head>
 <body>
     <button id="btnTopo" title="Voltar ao topo">↑</button>   
